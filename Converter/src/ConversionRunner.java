@@ -6,26 +6,36 @@ public class ConversionRunner
 		public static void main(String[] args)
 			{
 				greetUser();
-				int userChoice = pickConversionType();
-				System.out.println(userChoice);
+				pickConversionType();
 			}
 		public static void greetUser()
 			{
 				System.out.println("Hello, User! Welcome to the Universal Converter.");
 				System.out.println("You can perform many kinds of conversions with this tool. Let's get started!");
 			}
-		public static int pickConversionType()
+		public static void pickConversionType()
 		{
 			System.out.println("\nWhat kind of conversions would you like to do today?"
 					+ "\n 1) Temperature"
 					+ "\n 2) Number Systems"
-					+ "\n 3) Distance");
+					+ "\n 3) Distance"
+					+ "\n 4) Time");
 			int choice = userInput_int.nextInt();
-			if(choice > 0 && choice < 4)
+			if(choice > 0 && choice < 5)
 			{
-				return choice;
+				switch(choice)
+				{
+					case 1:
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					case 4:
+						timeConversion();
+						break;
+				}
 			}
-			return 0;
 		}
   
   public static void timeConversion()
