@@ -32,6 +32,7 @@ public class ConversionRunner
 		{
 			String[] timeUnits = {"Milliseconds", "Seconds", "Minutes", "Hours", "Days", "Weeks", "Years", "Decades", "Centuries"};
 			boolean choosingStartingUnit = true;
+			String startingUnit = "";
 			while (choosingStartingUnit)
 				{
 					System.out.println("What's your unit of time you want to convert from?");
@@ -40,7 +41,7 @@ public class ConversionRunner
 							System.out.println(s);
 						}
 					Scanner userInput = new Scanner (System.in);
-					String startingUnit = userInput.nextLine();
+					startingUnit = userInput.nextLine();
 					for (String s: timeUnits)
 						{
 							if (startingUnit.toLowerCase().equals(s.toLowerCase()))
