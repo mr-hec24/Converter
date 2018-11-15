@@ -30,7 +30,7 @@ public class ConversionRunner
 					case 2:
 						break;
 					case 3:
-						
+						DistanceConverter.distanceConversion();
 						break;
 					case 4:
 						timeConversion();
