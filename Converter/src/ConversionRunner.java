@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class ConversionRunner
 	{
 		static Scanner userInput_int = new Scanner(System.in);
+		static Scanner userInput_String = new Scanner(System.in);
+		static Scanner userInput_double = new Scanner(System.in);
 		public static void main(String[] args)
 			{
 				greetUser();
@@ -73,9 +75,23 @@ public class ConversionRunner
 						}
 				}
 		}
-  
-  
-  
+  public static void temperatureConversion()
+	  {
+		  double tempFrom = 0;
+		  double tempTo = 0;
+		  String unitFrom = "";
+		  String unitTo = "";
+		  
+		  System.out.println("What's the temperature you'd like to convert?");
+		  tempFrom = userInput_double.nextDouble();
+		  System.out.println("And what system of temperature is that?");
+		  unitFrom = userInput_String.nextLine();
+		  unitFrom.toLowerCase();
+		  System.out.println("Lastly, what temperature system would you like to convert to?");
+		  unitTo = userInput_String.nextLine();
+		  unitTo.toLowerCase();
+		  
+	  }
   public static void weightConversion() {
 	  String[] weightunits = {"kilogram", "gram", "ton", "pound","ounce"};
 	  boolean choosingStartWeight = true;
@@ -118,8 +134,4 @@ public class ConversionRunner
 	  }  
   
   }
-  
-  
-  
-  
 	}
