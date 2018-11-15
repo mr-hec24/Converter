@@ -9,7 +9,20 @@ public class ConversionRunner
 			{
 				greetUser();
 				int userChoice = pickConversionType();
-				System.out.println(userChoice);
+				switch(userChoice)
+				{
+					case 1:
+						temperatureConversion();
+						break;
+					case 2:
+						weightConversion();
+						break;
+					case 3:
+						break;
+					case 4:
+						timeConversion();
+						break;
+				}
 			}
 		public static void greetUser()
 			{
@@ -20,10 +33,11 @@ public class ConversionRunner
 		{
 			System.out.println("\nWhat kind of conversions would you like to do today?"
 					+ "\n 1) Temperature"
-					+ "\n 2) Number Systems"
-					+ "\n 3) Distance");
+					+ "\n 2) Weight"
+					+ "\n 3) Distance"
+					+ "\n 4) Time");
 			int choice = userInput_int.nextInt();
-			if(choice > 0 && choice < 4)
+			if(choice > 0 && choice < 5)
 			{
 				return choice;
 			}
