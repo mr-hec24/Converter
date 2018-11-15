@@ -38,7 +38,7 @@ public class ConversionRunner
 			}
 		}
   
-		//Hello
+		//Hello How
   public static void timeConversion()
 		{
 			String beginningUnit = chooseBeginningUnit();
