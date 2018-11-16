@@ -131,7 +131,7 @@ public class TimeConversion
 				}
 			else
 				{
-					//DIVIDE
+					//DIVIDE 
 				}
 			
 			return endResult;
