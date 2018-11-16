@@ -19,6 +19,7 @@ public class ConversionRunner
 						weightConversion();
 						break;
 					case 3:
+						DistanceConverter.distanceConversion();
 						break;
 					case 4:
 						timeConversion();
@@ -147,7 +148,8 @@ public class ConversionRunner
 			 
 		  }
 	  }  
-  
   }
 	}
->>>>>>> upstream/master
+ 
+
+
