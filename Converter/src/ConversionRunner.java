@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 public class ConversionRunner
@@ -18,6 +19,7 @@ public class ConversionRunner
 						weightConversion();
 						break;
 					case 3:
+						DistanceConverter.distanceConversion();
 						break;
 					case 4:
 						timeConversion();
@@ -146,6 +148,8 @@ public class ConversionRunner
 			 
 		  }
 	  }  
-  
   }
 	}
+ 
+
+
