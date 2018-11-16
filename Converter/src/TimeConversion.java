@@ -14,6 +14,7 @@ public class TimeConversion
 			//All smaller methods are going to be in here
 			askForStartingUnit();
 			askForEndingUnit();
+			conversion();
 		}
 		
 		public static void askForStartingUnit()
@@ -122,12 +123,61 @@ public class TimeConversion
 			}
 		}
 	
+		public static double biggerToSmaller(int beg, int end, double unit)
+		{
+			
+			if (beg == end)
+				{
+					return unit;
+				}
+			else
+				{
+					switch (beg)
+					{
+						case 2:
+								{
+									unit *= 1000;
+									break;
+								}
+						case 3:
+						case 4:
+								{
+									unit *= 60;
+									break;
+								}
+						case 5:
+								{
+									unit *= 24;
+									break;
+								}
+						case 6:
+								{
+									unit *= 7;
+									break;
+								}
+						case 7:
+								{
+									unit *= 52;
+									break;
+								}
+						case 8:
+						case 9:
+								{
+									unit *= 10;
+									break;
+								}
+					}
+					return biggerToSmaller(beg, end++, unit);
+				}
+			
+		}
+		
 		public static int conversion()
 		{
 			int endResult = 0;
 			if (startingUnit > endingUnit)
 				{
-					//MULTIPLY
+					System.out.println(biggerToSmaller(startingUnit, endingUnit, startingUnitNumber));
 				}
 			else
 				{
