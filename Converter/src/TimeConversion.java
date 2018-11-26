@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class TimeConversion
 	{
-		static String[] timeUnits = {"Milliseconds", "Seconds", "Minutes", "Hours", "Days", "Weeks", "Years", "Decades", "Centuries"};
+		static String[] timeUnits = {"Milliseconds", "Seconds", "Minutes", "Hours", "Days", "Weeks", "Months", "Years", "Decades", "Centuries"};
 		static int startingUnit;
 		static double startingUnitNumber;
 		static int endingUnit;
@@ -14,7 +14,7 @@ public class TimeConversion
 			//All smaller methods are going to be in here
 			askForStartingUnit();
 			askForEndingUnit();
-			conversion();
+			System.out.println(startingUnitNumber + " " + assignValues(startingUnit) + " is equivalent to " + conversion() + " " + assignValues(endingUnit) + " ");
 		}
 		
 		public static void askForStartingUnit()
@@ -33,7 +33,7 @@ public class TimeConversion
 					
 					userInput_Int = new Scanner (System.in);
 					startingUnit = userInput_Int.nextInt();
-					if (startingUnit > 9 || startingUnit < 1)
+					if (startingUnit > 10 || startingUnit < 1)
 						{
 							System.out.println("\nPlease Try Another Number"
 									+ "\n ");
@@ -65,7 +65,7 @@ public class TimeConversion
 					
 					userInput_Int = new Scanner (System.in);
 					endingUnit = userInput_Int.nextInt();
-					if (endingUnit > 9 || endingUnit < 1 || endingUnit == startingUnit)
+					if (endingUnit > 10 || endingUnit < 1 || endingUnit == startingUnit)
 						{
 							System.out.println("\nPlease Try Another Number"
 									+ "\n ");
@@ -106,13 +106,17 @@ public class TimeConversion
 						}
 				case 7:
 						{
-							return "Years";
+							return "Months";
 						}
 				case 8:
 						{
-							return "Decades";
+							return "Years";
 						}
 				case 9:
+						{
+							return "Decades";
+						}
+				case 10:
 						{
 							return "Centuries";
 						}
@@ -125,63 +129,126 @@ public class TimeConversion
 	
 		public static double biggerToSmaller(int beg, int end, double unit)
 		{
-			
-			if (beg == end)
+			if (beg == end + 1)
 				{
-					return unit;
-				}
-			else
-				{
-					switch (beg)
+					switch (end)
 					{
-						case 2:
+						case 1:
 								{
 									unit *= 1000;
 									break;
 								}
+						case 2:
 						case 3:
-						case 4:
 								{
 									unit *= 60;
 									break;
 								}
-						case 5:
+						case 4:
 								{
 									unit *= 24;
 									break;
 								}
-						case 6:
+						case 5:
 								{
 									unit *= 7;
 									break;
 								}
+						case 6:
+								{
+									unit *= 4.348115;
+									break;
+								}
 						case 7:
 								{
-									unit *= 52;
+									unit *= 12.000008;
 									break;
 								}
 						case 8:
 						case 9:
+						case 10:
 								{
 									unit *= 10;
 									break;
 								}
 					}
+					
+					return unit;
+				}
+			else
+				{
 					return biggerToSmaller(beg, end++, unit);
 				}
 			
 		}
 		
-		public static int conversion()
+		public static double smallerToBigger(int beg, int end, double unit)
+			{
+				if (beg == end - 1)
+					{
+						switch (end)
+						{
+							case 1:
+									{
+										unit /= 1000;
+										break;
+									}
+							case 2:
+							case 3:
+									{
+										unit /= 60;
+										break;
+									}
+							case 4:
+									{
+										unit /= 24;
+										break;
+									}
+							case 5:
+									{
+										unit /= 7;
+										break;
+									}
+							case 6:
+									{
+										unit /= 4.348115;
+										break;
+									}
+							case 7:
+									{
+										unit /= 12.000008;
+										break;
+									}
+							case 8:
+							case 9:
+							case 10:
+									{
+										unit /= 10;
+										break;
+									}
+						}
+						
+						return unit;
+					}
+				else
+					{
+						return smallerToBigger(beg, end--, unit);
+					}
+				
+			}
+		
+		public static double conversion()
 		{
-			int endResult = 0;
+			double endResult = 0;
 			if (startingUnit > endingUnit)
 				{
 					System.out.println(biggerToSmaller(startingUnit, endingUnit, startingUnitNumber));
+					endResult = biggerToSmaller(startingUnit, endingUnit, startingUnitNumber);
 				}
 			else
 				{
-					//DIVIDE 
+					System.out.println(smallerToBigger(startingUnit, endingUnit, startingUnitNumber));
+					endResult = smallerToBigger(startingUnit, endingUnit, startingUnitNumber);
 				}
 			
 			return endResult;
