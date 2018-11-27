@@ -55,7 +55,7 @@ public class TimeConversion
 			choosingUnit = true;
 			while (choosingUnit)
 				{
-					System.out.println("Please Choose Your Beginning Unit Of Time");
+					System.out.println("Please Choose Your Ending Unit Of Time");
 					int i = 1;
 					for (String s: timeUnits)
 						{
@@ -129,7 +129,8 @@ public class TimeConversion
 	
 		public static double biggerToSmaller(int beg, int end, double unit)
 		{
-			if (beg == end + 1)
+			int newEnd = end + 1;
+			if (beg == newEnd)
 				{
 					switch (end)
 					{
@@ -176,9 +177,7 @@ public class TimeConversion
 					return unit;
 				}
 			else
-				{
-					return biggerToSmaller(beg, end++, unit);
-				}
+				return biggerToSmaller(beg, newEnd, unit);
 			
 		}
 		
@@ -188,38 +187,37 @@ public class TimeConversion
 					{
 						switch (end)
 						{
-							case 1:
+							case 2:
 									{
 										unit /= 1000;
 										break;
 									}
-							case 2:
 							case 3:
+							case 4:
 									{
 										unit /= 60;
 										break;
 									}
-							case 4:
+							case 5:
 									{
 										unit /= 24;
 										break;
 									}
-							case 5:
+							case 6:
 									{
 										unit /= 7;
 										break;
 									}
-							case 6:
+							case 7:
 									{
 										unit /= 4.348115;
 										break;
 									}
-							case 7:
+							case 8:
 									{
 										unit /= 12.000008;
 										break;
 									}
-							case 8:
 							case 9:
 							case 10:
 									{
@@ -231,9 +229,7 @@ public class TimeConversion
 						return unit;
 					}
 				else
-					{
-						return smallerToBigger(beg, end--, unit);
-					}
+					return smallerToBigger(beg, end--, unit);
 				
 			}
 		
