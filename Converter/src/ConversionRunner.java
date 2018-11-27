@@ -1,14 +1,31 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 public class ConversionRunner
 	{
 		static Scanner userInput_int = new Scanner(System.in);
+		static Scanner userInput_String = new Scanner(System.in);
+		static Scanner userInput_double = new Scanner(System.in);
 		public static void main(String[] args)
 			{
-				weightConversion();
-//				greetUser();
-//				int userChoice = pickConversionType();
-//				System.out.println(userChoice);
+				greetUser();
+				int userChoice = pickConversionType();
+				switch(userChoice)
+				{
+					case 1:
+						temperatureConversion();
+						break;
+					case 2:
+						weightConversion();
+						break;
+					case 3:
+						DistanceConverter.distanceConversion();
+						break;
+					case 4:
+						timeConversion();
+						break;
+						
+				}
 			}
 		public static void greetUser()
 			{
@@ -19,9 +36,10 @@ public class ConversionRunner
 		{
 			System.out.println("\nWhat kind of conversions would you like to do today?"
 					+ "\n 1) Temperature"
-					+ "\n 2) Number Systems"
+					+ "\n 2) Weight"
 					+ "\n 3) Distance"
-					+ "\n 4) Weight");
+					+ "\n 4) Time");
+
 			int choice = userInput_int.nextInt();
 			if(choice > 0 && choice < 5)
 			{
@@ -75,9 +93,23 @@ public class ConversionRunner
 						}
 				}
 		}
-  
-  
-  
+  public static void temperatureConversion()
+	  {
+		  double tempFrom = 0;
+		  double tempTo = 0;
+		  String unitFrom = "";
+		  String unitTo = "";
+		  
+		  System.out.println("What's the temperature you'd like to convert?");
+		  tempFrom = userInput_double.nextDouble();
+		  System.out.println("And what system of temperature is that?");
+		  unitFrom = userInput_String.nextLine();
+		  unitFrom.toLowerCase();
+		  System.out.println("Lastly, what temperature system would you like to convert to?");
+		  unitTo = userInput_String.nextLine();
+		  unitTo.toLowerCase();
+		  
+	  }
   public static void weightConversion() {
 	  String[] weightunits = {"kilogram", "gram", "ton", "pound","ounce"};
 	  boolean choosingStartWeight = true;
@@ -250,8 +282,7 @@ public class ConversionRunner
 	  }
 	 
   }
-  
-
-  
-  
 	}
+ 
+
+
