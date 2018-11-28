@@ -127,12 +127,11 @@ public class TimeConversion
 			}
 		}
 	
-		public static double biggerToSmaller(int beg, int end, double unit)
+		public static double convertBiggerToSmaller(int beg, int end, double unit)
 		{
-			int newEnd = end + 1;
-			if (beg == newEnd)
+			if (end < beg)
 				{
-					switch (end)
+					switch (beg)
 					{
 						case 1:
 								{
@@ -157,12 +156,12 @@ public class TimeConversion
 								}
 						case 6:
 								{
-									unit *= 4.348115;
+									unit *= 4.3452380952381;
 									break;
 								}
 						case 7:
 								{
-									unit *= 12.000008;
+									unit *= 12;
 									break;
 								}
 						case 8:
@@ -173,51 +172,52 @@ public class TimeConversion
 									break;
 								}
 					}
-					
-					return unit;
+					int newBeg = beg - 1;
+					return convertBiggerToSmaller(newBeg, end, unit);
 				}
 			else
-				return biggerToSmaller(beg, newEnd, unit);
+				return unit;
 			
 		}
 		
-		public static double smallerToBigger(int beg, int end, double unit)
+		public static double convertSmallerToBigger(int beg, int end, double unit)
 			{
-				if (beg == end - 1)
+				if (end > beg)
 					{
-						switch (end)
+						switch (beg)
 						{
-							case 2:
+							case 1:
 									{
 										unit /= 1000;
 										break;
 									}
+							case 2:
 							case 3:
-							case 4:
 									{
 										unit /= 60;
 										break;
 									}
-							case 5:
+							case 4:
 									{
 										unit /= 24;
 										break;
 									}
-							case 6:
+							case 5:
 									{
 										unit /= 7;
 										break;
 									}
-							case 7:
+							case 6:
 									{
 										unit /= 4.348115;
 										break;
 									}
-							case 8:
+							case 7:
 									{
 										unit /= 12.000008;
 										break;
 									}
+							case 8:
 							case 9:
 							case 10:
 									{
@@ -225,12 +225,10 @@ public class TimeConversion
 										break;
 									}
 						}
-						
-						return unit;
+						return convertBiggerToSmaller(beg++, end, unit);
 					}
 				else
-					return smallerToBigger(beg, end--, unit);
-				
+					return unit;
 			}
 		
 		public static double conversion()
@@ -238,13 +236,14 @@ public class TimeConversion
 			double endResult = 0;
 			if (startingUnit > endingUnit)
 				{
-					System.out.println(biggerToSmaller(startingUnit, endingUnit, startingUnitNumber));
-					endResult = biggerToSmaller(startingUnit, endingUnit, startingUnitNumber);
+					endResult = convertBiggerToSmaller(startingUnit, endingUnit, startingUnitNumber);
+					System.out.println("This is the end result " + endResult);
+					
 				}
 			else
 				{
-					System.out.println(smallerToBigger(startingUnit, endingUnit, startingUnitNumber));
-					endResult = smallerToBigger(startingUnit, endingUnit, startingUnitNumber);
+					System.out.println(convertSmallerToBigger(startingUnit, endingUnit, startingUnitNumber));
+					endResult = convertSmallerToBigger(startingUnit, endingUnit, startingUnitNumber);
 				}
 			
 			return endResult;
