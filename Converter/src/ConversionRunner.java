@@ -93,20 +93,87 @@ public class ConversionRunner
 		}
   public static void temperatureConversion()
 	  {
-		  double tempFrom = 0;
-		  double tempTo = 0;
+		  double temp = 0;
+		  double conversionFactor = 5;
+		  conversionFactor /= 9;
 		  String unitFrom = "";
 		  String unitTo = "";
+		  String[] tempUnits = {"farenheit", "celsius", "kelvin", "rankine"};
+		  String[] capUnits = {"Farenheit", "Celsius", "Kelvin", "Rankine"};
+		  boolean pickedGoodUnit = false;
 		  
 		  System.out.println("What's the temperature you'd like to convert?");
-		  tempFrom = userInput_double.nextDouble();
-		  System.out.println("And what system of temperature is that?");
-		  unitFrom = userInput_String.nextLine();
-		  unitFrom.toLowerCase();
-		  System.out.println("Lastly, what temperature system would you like to convert to?");
-		  unitTo = userInput_String.nextLine();
-		  unitTo.toLowerCase();
-		  
+		  temp = userInput_double.nextDouble();
+		  while(!pickedGoodUnit)
+			  {
+				  System.out.println("What system of temperature is that?");
+				  for(String s: capUnits)
+					  {
+						  System.out.println(" " + s);
+					  }
+				  unitFrom = userInput_String.nextLine();
+				  unitFrom.toLowerCase();
+				  for(String s: tempUnits)
+					  {
+						  if(s.equals(unitFrom))
+							  {
+								  pickedGoodUnit = true;
+							  }
+					  }
+			  }
+		  pickedGoodUnit = false;
+		  while(!pickedGoodUnit)
+			  {
+				  System.out.println("Now, what temperature system would you like to convert to?");
+				  for(String s: capUnits)
+					  {
+						  System.out.println(" " + s);
+					  }
+				  unitTo = userInput_String.nextLine();
+				  unitTo.toLowerCase();
+				  for(String s: tempUnits)
+					  {
+						  if(s.equals(unitTo))
+							  {
+								  pickedGoodUnit = true;
+							  }
+					  }
+			  }
+		  switch(unitFrom)
+		  	{
+		  		case "farenheit":
+		  			temp -= 32;
+		  			temp *= conversionFactor;
+		  			break;
+		  		case "celsius":
+		  			break;
+		  		case "kelvin":
+		  			temp -= (double)273.15;
+		  			break;
+		  		case "rankine":
+		  			temp -= 32;
+		  			temp *= conversionFactor;
+		  			temp -= (double)273.15;
+		  			break;
+		  	}
+		  switch(unitTo)
+		  	{
+		  	case "farenheit":
+		  		temp /= conversionFactor;
+		  		temp += 32;
+	  			break;
+	  		case "celsius":
+	  			break;
+	  		case "kelvin":
+	  			temp += 273.15;
+	  			break;
+	  		case "rankine":
+	  			temp /= conversionFactor;
+		  		temp += 32;
+	  			temp += 273.15;
+	  			break;
+		  	}
+		  System.out.printf("The temperature is %.3f\n", temp);
 	  }
   public static void weightConversion() {
 	  String[] weightunits = {"kilogram", "gram", "ton", "pound","ounce"};
