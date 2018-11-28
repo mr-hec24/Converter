@@ -11,6 +11,8 @@ public class DistanceConverter
   				System.out.println("4) km to mi");
   				System.out.println("5) miles to ft");
   				System.out.println("6) ft to miles");
+  				System.out.println("7) m to km");
+  				System.out.println("8) km to m");
   				
   				Scanner userInput_int = new Scanner (System.in);
   				Scanner userInput_double = new Scanner (System.in);
@@ -61,5 +63,20 @@ public class DistanceConverter
   						mileVal = (footVal * 0.00018939);
   						System.out.println(footVal + " ft = " + mileVal + " mi");
   					}
+  				else if(choice == 7)
+  					{
+  						System.out.println("Enter in a value in meters to convert it to kilometers.");
+  						meterVal = userInput_double.nextDouble();
+  						kmVal = (meterVal / 1000);
+  						System.out.println(meterVal + " m = " + kmVal + " km");
+  					}
+  				else if(choice == 8)
+  					{
+  						System.out.println("Enter in a value in kilometers to convert it to meters.");
+  						kmVal = userInput_double.nextDouble();
+  						meterVal = (kmVal * 1000);
+  						System.out.println(kmVal + " km = " + meterVal + " m");
+  					}
+  				
   			}
 	}
