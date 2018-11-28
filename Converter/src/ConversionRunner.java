@@ -58,10 +58,9 @@ public class ConversionRunner
 					System.out.println("What's your unit of time you want to convert from?");
 					for (String s: timeUnits)
 						{
-							System.out.println(s);
+							System.out.println(" " + s);
 						}
-					Scanner userInput = new Scanner (System.in);
-					startingUnit = userInput.nextLine();
+					startingUnit = userInput_String.nextLine();
 					for (String s: timeUnits)
 						{
 							if (startingUnit.toLowerCase().equals(s.toLowerCase()))
@@ -78,8 +77,7 @@ public class ConversionRunner
 						{
 							System.out.println(s);
 						}
-					Scanner userInput = new Scanner (System.in);
-					String endingUnit = userInput.nextLine();
+					String endingUnit = userInput_String.nextLine();
 					for (String s: timeUnits)
 						{
 							if (endingUnit.toLowerCase().equals(s.toLowerCase()))
@@ -120,8 +118,7 @@ public class ConversionRunner
 			  System.out.println(a);
 			
 		  }
-		  Scanner userInput = new Scanner(System.in);
-		  startingUnit = userInput.nextLine();
+		  startingUnit = userInput_String.nextLine();
 		  
 		  
 		  for(String a : weightunits) {
@@ -134,8 +131,7 @@ public class ConversionRunner
 	 
 	  
 	  System.out.println("Put in a value of this weight.");
-	  Scanner userInput2 = new Scanner(System.in);
-	  double startingValue = userInput2.nextDouble();
+	  double startingValue = userInput_double.nextDouble();
 	  
 	 
 	  
@@ -146,8 +142,7 @@ public class ConversionRunner
 		  for(String a : weightunits) {
 			  System.out.println(a);
 		  }
-		  Scanner userInput = new Scanner (System.in);
-		  String endingUnit = userInput.nextLine();
+		  String endingUnit = userInput_String.nextLine();
 		  for(String a : weightunits) {
 			  if (endingUnit.toLowerCase().equals(a.toLowerCase()))
 					{
