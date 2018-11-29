@@ -27,7 +27,7 @@ public class TimeConversion
 					int i = 1;
 					for (String s: timeUnits)
 						{
-							System.out.println("[" + i + "] " + s);
+							System.out.println(" " + i + ") " + s);
 							i++;
 						}
 					
@@ -45,7 +45,7 @@ public class TimeConversion
 				}
 			
 			
-			System.out.println("How Many " + assignValues(startingUnit) + " Would You Like To Convert?");
+			System.out.println("How Many " + assignValues(startingUnit) + " Would You Like To Convert? (Decimals are allowed)");
 			startingUnitNumber = userInput_Int.nextDouble();
 		}
 		
@@ -59,7 +59,7 @@ public class TimeConversion
 					int i = 1;
 					for (String s: timeUnits)
 						{
-							System.out.println("[" + i + "] " + s);
+							System.out.println(" " + i + ") " + s);
 							i++;
 						}
 					
@@ -182,7 +182,7 @@ public class TimeConversion
 		
 		public static double convertSmallerToBigger(int beg, int end, double unit)
 			{
-				if (end > beg)
+				if (beg < end)
 					{
 						switch (beg)
 						{
@@ -225,7 +225,8 @@ public class TimeConversion
 										break;
 									}
 						}
-						return convertBiggerToSmaller(beg++, end, unit);
+						int newBeg = beg + 1;
+						return convertSmallerToBigger(newBeg, end, unit);
 					}
 				else
 					return unit;
@@ -233,16 +234,30 @@ public class TimeConversion
 		
 		public static double conversion()
 		{
+			String[] converting = {"C", "O", "N", "V", "E", "R", "T", "I", "N", "G"};
+			for (int i = 0; i < 10; i++)
+				{
+					System.out.print(converting[i] + " ");
+					try
+						{
+							Thread.sleep(750);
+						} catch (InterruptedException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				}
+			
+			System.out.println("\n ");
+			
 			double endResult = 0;
 			if (startingUnit > endingUnit)
 				{
 					endResult = convertBiggerToSmaller(startingUnit, endingUnit, startingUnitNumber);
-					System.out.println("This is the end result " + endResult);
 					
 				}
 			else
 				{
-					System.out.println(convertSmallerToBigger(startingUnit, endingUnit, startingUnitNumber));
 					endResult = convertSmallerToBigger(startingUnit, endingUnit, startingUnitNumber);
 				}
 			
