@@ -22,7 +22,7 @@ public class ConversionRunner
 						DistanceConverter.distanceConversion();
 						break;
 					case 4:
-						TimeConversion.timeConversion();
+						TimeConversion.timeConverter();
 						break;
 						
 				}

@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 public class TimeConversion
 	{
 		static String[] timeUnits = {"Milliseconds", "Seconds", "Minutes", "Hours", "Days", "Weeks", "Months", "Years", "Decades", "Centuries"};
@@ -14,7 +16,10 @@ public class TimeConversion
 			//All smaller methods are going to be in here
 			askForStartingUnit();
 			askForEndingUnit();
-			System.out.println(startingUnitNumber + " " + assignValues(startingUnit) + " is equivalent to " + conversion() + " " + assignValues(endingUnit) + " ");
+			
+			double answer = conversion();
+			// + " " + assignValues(endingUnit) + " "
+			System.out.printf(startingUnitNumber + " " + assignValues(startingUnit) + " is equivalent to %.2d", answer);
 		}
 		
 		public static void askForStartingUnit()
@@ -243,7 +248,6 @@ public class TimeConversion
 							Thread.sleep(750);
 						} catch (InterruptedException e)
 						{
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 				}
